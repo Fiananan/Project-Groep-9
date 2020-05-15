@@ -32,17 +32,23 @@ public class Shooting : MonoBehaviour
     [SerializeField] private int CriticalChance;
 
     [SerializeField] private Text AmmoText;
+    [SerializeField] private GameObject ReloadingText;
 
     void Update()
     {
         if (Reloading)
         {
+            ReloadingText.SetActive(true);
             ReloadTime += Time.deltaTime;
             if (ReloadTime >= TimeTakesToReload)
             {
                 ReloadTime = 0f;
                 Reloading = false;
             }
+        }
+        else
+        {
+            ReloadingText.SetActive(false);
         }
 
         EquipWeapon();
