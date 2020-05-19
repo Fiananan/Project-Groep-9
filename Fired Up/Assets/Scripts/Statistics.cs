@@ -7,8 +7,8 @@ public class Statistics : MonoBehaviour
     public int Score;
     public int ScoreShowed;
     public int Deaths;
-    public int ShotsFired;
-    public int ShotsHit;
+    public float ShotsFired;
+    public float ShotsHit;
     public float Accuracy;
 
     [SerializeField] private int ScoreShowSpeed;
@@ -17,19 +17,22 @@ public class Statistics : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
 
-        if (ShotsHit != 0 && ShotsFired != 0)
-        {
-            Accuracy = ShotsHit / ShotsFired * 100;
-        }
-        else
-        {
-            Accuracy = 0f;
-        }
+        Accuracy = ShotsHit * 100 / ShotsFired;
 
         if (ScoreShowed < Score)
         {
             ScoreShowed += ScoreShowSpeed;
         }
+    }
+
+    void ShotFired()
+    {
+        ShotsFired++;
+    }
+
+    void ShotHit()
+    {
+        ShotsHit++;
     }
 
     void Died()

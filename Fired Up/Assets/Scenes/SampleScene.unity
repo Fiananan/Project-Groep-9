@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -297,6 +297,106 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 3
   m_Center: {x: 0, y: 1.5, z: 0}
+--- !u!1 &70820794
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 70820795}
+  - component: {fileID: 70820798}
+  - component: {fileID: 70820797}
+  - component: {fileID: 70820796}
+  m_Layer: 5
+  m_Name: Stats
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &70820795
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70820794}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_Children: []
+  m_Father: {fileID: 231657945}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 496.6, y: 222.7}
+  m_SizeDelta: {x: 1861.4417, y: 699.1216}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &70820796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70820794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 765fb2ce3eba68d48baa9e23470920b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 70820797}
+--- !u!114 &70820797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70820794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 447b5600c2bad5c40b2f64d9b0aaaf3d, type: 3}
+    m_FontSize: 150
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 150
+    m_Alignment: 2
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Deaths: 0
+
+    Shots Fired: 0
+
+    Shots Hit: 0
+
+    Accuracy: 0%
+
+'
+--- !u!222 &70820798
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70820794}
+  m_CullTransparentMesh: 0
 --- !u!1 &75343694
 GameObject:
   m_ObjectHideFlags: 0
@@ -854,6 +954,7 @@ RectTransform:
   - {fileID: 740805767}
   - {fileID: 940519786}
   - {fileID: 102891508}
+  - {fileID: 70820795}
   m_Father: {fileID: 26495463}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4035,8 +4136,9 @@ MonoBehaviour:
   backwards: 115
   right: 100
   left: 97
-  MovementSpeed: 0.1
+  MovementSpeed: 0.05
   cam: {fileID: 963194227}
+  Pause: {fileID: 1666464778}
 --- !u!65 &1341198978
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4166,6 +4268,7 @@ MonoBehaviour:
   CriticalChance: 5
   AmmoText: {fileID: 2015009557}
   ReloadingText: {fileID: 1281253844}
+  Pause: {fileID: 1666464778}
 --- !u!114 &1341198984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5226,6 +5329,7 @@ MonoBehaviour:
   ResumeButton: {fileID: 940519785}
   QuitButton: {fileID: 102891507}
   PausedText: {fileID: 740805766}
+  Stats: {fileID: 70820794}
 --- !u!1 &1670009146
 GameObject:
   m_ObjectHideFlags: 0

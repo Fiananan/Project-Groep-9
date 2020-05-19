@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Camera cam;
 
+    [SerializeField] private PauseManager Pause;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -22,8 +24,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Movement();
-        Rotate();
+        if (!Pause.Paused)
+        {
+            Movement();
+            Rotate();
+        }
     }
 
     void Movement()

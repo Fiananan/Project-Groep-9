@@ -34,30 +34,41 @@ public class Shooting : MonoBehaviour
     [SerializeField] private Text AmmoText;
     [SerializeField] private GameObject ReloadingText;
 
+    private GameObject stats;
+    [SerializeField] private PauseManager Pause;
+
+    void Start()
+    {
+        stats = GameObject.FindGameObjectWithTag("Statistics");
+    }
+
     void Update()
     {
-        if (Reloading)
+        if (!Pause.Paused)
         {
-            ReloadingText.SetActive(true);
-            ReloadTime += Time.deltaTime;
-            if (ReloadTime >= TimeTakesToReload)
+            if (Reloading)
             {
-                ReloadTime = 0f;
-                Reloading = false;
+                ReloadingText.SetActive(true);
+                ReloadTime += Time.deltaTime;
+                if (ReloadTime >= TimeTakesToReload)
+                {
+                    ReloadTime = 0f;
+                    Reloading = false;
+                }
             }
-        }
-        else
-        {
-            ReloadingText.SetActive(false);
-        }
+            else
+            {
+                ReloadingText.SetActive(false);
+            }
 
-        EquipWeapon();
+            EquipWeapon();
 
-        GetShootInput();
-        
-        if (Input.GetKeyDown(ReloadKey))
-        {
-            Reload();
+            GetShootInput();
+
+            if (Input.GetKeyDown(ReloadKey))
+            {
+                Reload();
+            }
         }
 
         UpdateAmmoText();
@@ -126,6 +137,8 @@ public class Shooting : MonoBehaviour
         Bullet = Instantiate(BulletPrefab, ShootingPoint.position, ShootingPoint.rotation);
         Bullet.GetComponent<Rigidbody>().AddForce(-Bullet.transform.forward.normalized * BulletSpeed, ForceMode.Impulse);
         Bullet.GetComponent<Bullet>().Damage = CriticalHit();
+        Bullet.GetComponent<Bullet>().ShotBy = "Player";
+        stats.SendMessage("ShotFired", SendMessageOptions.DontRequireReceiver);
         Ammo--;
     }
 

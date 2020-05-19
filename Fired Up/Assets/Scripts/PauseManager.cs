@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
 {
-    [SerializeField] private bool Paused = false;
+    public bool Paused = false;
 
     [SerializeField] private GameObject Background;
     [SerializeField] private GameObject ResumeButton;
     [SerializeField] private GameObject QuitButton;
     [SerializeField] private GameObject PausedText;
+    [SerializeField] private GameObject Stats;
 
     void Update()
     {
@@ -37,6 +38,7 @@ public class PauseManager : MonoBehaviour
         PausedText.SetActive(false);
         ResumeButton.SetActive(false);
         QuitButton.SetActive(false);
+        Stats.SetActive(false);
     }
 
     public void Pause()
@@ -48,6 +50,7 @@ public class PauseManager : MonoBehaviour
         PausedText.SetActive(true);
         ResumeButton.SetActive(true);
         QuitButton.SetActive(true);
+        Stats.SetActive(true);
     }
 
     public void ToMenu()

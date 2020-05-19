@@ -18,8 +18,12 @@ public class PlayerHealth : MonoBehaviour
     public Slider HPBar;
     [SerializeField] private Text HPText;
 
+    private GameObject stats;
+
     void Start()
     {
+        stats = GameObject.FindGameObjectWithTag("Statistics");
+
         ArmorBar.maxValue = MaxArmor;
         ArmorBar.value = MaxArmor;
         HPBar.maxValue = MaxHP;
@@ -36,6 +40,7 @@ public class PlayerHealth : MonoBehaviour
         HPText.text = HP.ToString();
         if (HP <= 0)
         {
+            stats.SendMessage("Died", SendMessageOptions.DontRequireReceiver);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
@@ -58,8 +63,10 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    void RecieveDamage(int damage)
+    void RecieveDamage(BulletParameters BulletParams)
     {
+        int damage = BulletParams.Damage;
+
         if (Armor <= 0)
         {
             HP -= damage;
