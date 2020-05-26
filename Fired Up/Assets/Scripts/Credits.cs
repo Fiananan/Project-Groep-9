@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Credits : MonoBehaviour
 {
-    [SerializeField] private Transform CreditsStartlocation;
     [SerializeField] private GameObject CreditsText;
     [SerializeField] private GameObject Background;
 
+    [SerializeField] private AudioClip[] MusicClip;
     [SerializeField] private AudioSource Music;
     private bool MusicPlaying = false;
 
@@ -23,6 +23,9 @@ public class Credits : MonoBehaviour
             CreditsText.SetActive(true);
             if (!MusicPlaying)
             {
+                int randomSong = Random.Range(0, 2);
+                print(randomSong);
+                Music.clip = MusicClip[randomSong];
                 Music.Play();
                 MusicPlaying = true;
             }
@@ -41,7 +44,6 @@ public class Credits : MonoBehaviour
                 Music.Stop();
             }
             MusicPlaying = false;
-            CreditsText.transform.position = CreditsStartlocation.position;
             Background.SetActive(false);
             CreditsText.SetActive(false);
         }

@@ -295,10 +295,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaleVoiceLines: []
-  FemaleVoiceLines: []
+  FemaleVoiceLines:
+  - {fileID: 8300000, guid: 17c2f912843b92b48ab36c3a6a3c3498, type: 3}
+  - {fileID: 8300000, guid: c0817f1a30c83ac43b582f24d38d8fd6, type: 3}
+  - {fileID: 8300000, guid: bc7b556a29ba38842aa77d6b29594e08, type: 3}
+  - {fileID: 8300000, guid: 0749664d39f87004e8388d4172772aa6, type: 3}
+  - {fileID: 8300000, guid: 03d099aef4945d64690821affd023260, type: 3}
+  - {fileID: 8300000, guid: 72f7c0a3abfed3147a18509d08c03855, type: 3}
+  - {fileID: 8300000, guid: 82342c30d5365054b89860bbcb4dd596, type: 3}
+  - {fileID: 8300000, guid: b3748bac05432b94094e0c29a8127e59, type: 3}
   VoiceLineIndex: 0
   MaleCompliments: []
-  FemaleCompliments: []
+  FemaleCompliments:
+  - {fileID: 8300000, guid: 1f0513eb3488c7946ae8af504ef5e227, type: 3}
+  - {fileID: 8300000, guid: 1c773c8bd60cf5d479920fc0f99f7bb6, type: 3}
+  - {fileID: 8300000, guid: 6b05adc8655f51a4db8b98f483c2791b, type: 3}
+  - {fileID: 8300000, guid: e9d792bb18ffc304b834e5a46b0e5601, type: 3}
   ComplimentIndex: 0
   audio: {fileID: 514190173}
 --- !u!114 &34261138
@@ -316,10 +328,22 @@ MonoBehaviour:
   gender: female
   voiceLine: {fileID: 34261137}
   VoiceLineTimesMale: []
-  VoiceLineTimesFemale: []
+  VoiceLineTimesFemale:
+  - 9
+  - 10
+  - 6
+  - 4
+  - 8
+  - 10
+  - 5
+  - 8
   VoiceLineTime: 0
   ComplimentTimesMale: []
-  ComplimentTimesFemale: []
+  ComplimentTimesFemale:
+  - 2
+  - 1
+  - 3
+  - 2
   ComplimentTime: 0
   PlayerController: {fileID: 853014645}
   PlayerKeycard: {fileID: 853014638}
