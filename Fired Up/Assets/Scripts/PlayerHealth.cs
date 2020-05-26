@@ -41,7 +41,7 @@ public class PlayerHealth : MonoBehaviour
         if (HP <= 0)
         {
             stats.SendMessage("Died", SendMessageOptions.DontRequireReceiver);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene("DiedScreen");
         }
     }
 
