@@ -11,13 +11,24 @@ public class PlayerController : MonoBehaviour
 
     public float MovementSpeed;
     private Vector3 Direction;
+    private Rigidbody rb;
+    private Vector3 MousePos;
+
+    private Camera mainCamera;
 
     [SerializeField] private PauseManager Pause;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        mainCamera = FindObjectOfType<Camera>();
+    }
 
     void Update()
     {
         if (!Pause.Paused)
         {
+            MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Rotate();
             MoveInput();
         }
@@ -89,7 +100,6 @@ public class PlayerController : MonoBehaviour
 
     void Movement()
     {
-        Rigidbody rb = GetComponent<Rigidbody>();
         rb.velocity = Direction;
 
 
@@ -123,10 +133,21 @@ public class PlayerController : MonoBehaviour
 
     void Rotate()
     {
-        Vector2 positionOnScreen = Camera.main.WorldToViewportPoint(transform.position);
-        Vector2 mouseOnScreen = (Vector2)Camera.main.ScreenToViewportPoint(Input.mousePosition);
-        float angle = AngleBetweenTwoPoints(positionOnScreen, mouseOnScreen);
-        transform.rotation = Quaternion.Euler(new Vector3(0f, -angle, 0f));
+        Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
+        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+        float rayLength;
+        if (groundPlane.Raycast(cameraRay, out rayLength))
+        {
+            Vector3 pointToLook = cameraRay.GetPoint(rayLength);
+            Debug.DrawLine(cameraRay.origin, pointToLook, Color.blue);
+
+            transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
+        }
+
+        //Vector2 positionOnScreen = Camera.main.WorldToViewportPoint(transform.position);
+        //Vector2 mouseOnScreen = (Vector2)Camera.main.ScreenToViewportPoint(Input.mousePosition);
+        //float angle = AngleBetweenTwoPoints(positionOnScreen, mouseOnScreen);
+        //transform.rotation = Quaternion.Euler(new Vector3(0f, -angle, 0f));
     }
 
     float AngleBetweenTwoPoints(Vector3 a, Vector3 b)

@@ -12,36 +12,31 @@ public class VoiceLineManager : MonoBehaviour
 
     [SerializeField] private AudioSource audio;
 
-    public void NextVoiceLine(string gender, int index)
+    public void NextVoiceLine(int index, string gender)
     {
-        if (!audio.isPlaying)
+        if (gender == "male")
         {
-            if (gender == "male")
-            {
-                audio.clip = MaleVoiceLines[index];
-            }
-            else if (gender == "female")
-            {
-                audio.clip = FemaleVoiceLines[index];
-            }
-            audio.Play();
+            audio.clip = MaleVoiceLines[index];
         }
+        else if (gender == "female")
+        {
+            audio.clip = FemaleVoiceLines[index];
+        }
+        audio.PlayOneShot(audio.clip);
     }
 
-    public void Compliment(string gender)
+    public int Compliment(string gender)
     {
-        if (!audio.isPlaying)
+        int ComplimentIndex = Random.Range(0, MaleCompliments.Length + 1);
+        if (gender == "male")
         {
-            int ComplimentIndex = Random.Range(0, MaleCompliments.Length + 1);
-            if (gender == "male")
-            {
-                audio.clip = MaleCompliments[ComplimentIndex];
-            }
-            else if (gender == "female")
-            {
-                audio.clip = FemaleCompliments[ComplimentIndex];
-            }
-            audio.Play();
+            audio.clip = MaleCompliments[ComplimentIndex];
         }
+        else if (gender == "female")
+        {
+            audio.clip = FemaleCompliments[ComplimentIndex];
+        }
+        audio.PlayOneShot(audio.clip);
+        return ComplimentIndex;
     }
 }
