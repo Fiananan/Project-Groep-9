@@ -5,7 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] private float MaxHP;
-    [SerializeField] private float HP;
+    public float HP;
 
     [SerializeField] private GameObject DamagePopUp;
 

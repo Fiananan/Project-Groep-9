@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum TutorialState
 {
@@ -43,15 +44,12 @@ public class TutorialManager : MonoBehaviour
 
     [SerializeField] private PlayerController PlayerController;
     [SerializeField] private Keycard PlayerKeycard;
-    private bool MoveToLocation = false;
-    private bool MoveToDoor = false;
-    private bool MoveToDoor2 = false;
-    private GameObject enemy;
-
-    void Start()
-    {
-        enemy = GameObject.FindGameObjectWithTag("Enemy");
-    }
+    public bool MoveToLocation = false;
+    public bool MoveToDoor = false;
+    public bool MoveToDoor2 = false;
+    public bool InLift = false;
+    [SerializeField] private TutorialEnemy enemy;
+    [SerializeField] private GameObject DoorTrigger;
 
     void Update()
     {
@@ -80,175 +78,115 @@ public class TutorialManager : MonoBehaviour
             VoiceLineTime += Time.deltaTime;
             if (VoiceLineTime >= GetVoiceLineTime(1, gender))
             {
-                if (Input.GetKey(PlayerController.forwards) || Input.GetKey(PlayerController.backwards) || Input.GetKey(PlayerController.right) || Input.GetKey(PlayerController.left))
-                {
-                    VoiceLineTime = 0f;
-                    ComplimentIndex = voiceLine.Compliment(gender);
-                    if (ComplimentTime >= GetComplimentTime(ComplimentIndex, gender))
-                    {
-                        tutorial = TutorialState.NextLocation;
-                        ComplimentTime = 0f;
-                    }
-                    else
-                    {
-                        ComplimentTime += Time.deltaTime;
-                    }
-                }
-            }
-        }
-        else if (tutorial == TutorialState.NextLocation)
-        {
-            voiceLine.NextVoiceLine(2, gender);
-            if (VoiceLineTime >= GetVoiceLineTime(2, gender))
-            {
                 if (MoveToLocation)
                 {
                     VoiceLineTime = 0f;
-                    ComplimentIndex = voiceLine.Compliment(gender);
-                    if (ComplimentTime >= GetComplimentTime(ComplimentIndex, gender))
-                    {
-                        tutorial = TutorialState.KeycardPickup;
-                        ComplimentTime = 0f;
-                    }
-                    else
-                    {
-                        ComplimentTime += Time.deltaTime;
-                    }
+                    tutorial = TutorialState.Enemy;
                 }
-            }
-            else
-            {
-                VoiceLineTime += Time.deltaTime;
             }
         }
         else if (tutorial == TutorialState.Enemy)
         {
-            voiceLine.NextVoiceLine(3, gender);
-            if (VoiceLineTime >= GetVoiceLineTime(3, gender))
+            voiceLine.NextVoiceLine(2, gender);
+            tutorial = TutorialState.PlayingEnemy;
+        }
+        else if (tutorial == TutorialState.PlayingEnemy)
+        {
+            VoiceLineTime += Time.deltaTime;
+            if (VoiceLineTime >= GetVoiceLineTime(2, gender))
             {
-                if (enemy = null)
+                if (enemy.Died)
                 {
                     VoiceLineTime = 0f;
-                    ComplimentIndex = voiceLine.Compliment(gender);
-                    if (ComplimentTime >= GetComplimentTime(ComplimentIndex, gender))
-                    {
-                        tutorial = TutorialState.KeycardPickup;
-                        ComplimentTime = 0f;
-                    }
-                    else
-                    {
-                        ComplimentTime += Time.deltaTime;
-                    }
+                    tutorial = TutorialState.KeycardPickup;
                 }
-            }
-            else
-            {
-                VoiceLineTime += Time.deltaTime;
             }
         }
         else if (tutorial == TutorialState.KeycardPickup)
         {
-            voiceLine.NextVoiceLine(4, gender);
-            if (VoiceLineTime >= GetVoiceLineTime(4, gender))
+            voiceLine.NextVoiceLine(3, gender);
+            tutorial = TutorialState.PlayingKeycardPickup;
+        }
+        else if (tutorial == TutorialState.PlayingKeycardPickup)
+        {
+            VoiceLineTime += Time.deltaTime;
+            if (VoiceLineTime >= GetVoiceLineTime(3, gender))
             {
                 if (PlayerKeycard.HasRedCard)
                 {
                     VoiceLineTime = 0f;
-                    ComplimentIndex = voiceLine.Compliment(gender);
-                    if (ComplimentTime >= GetComplimentTime(ComplimentIndex, gender))
-                    {
-                        tutorial = TutorialState.MoveToDoor;
-                        ComplimentTime = 0f;
-                    }
-                    else
-                    {
-                        ComplimentTime += Time.deltaTime;
-                    }
+                    tutorial = TutorialState.MoveToDoor;
                 }
-            }
-            else
-            {
-                VoiceLineTime += Time.deltaTime;
             }
         }
         else if (tutorial == TutorialState.MoveToDoor)
         {
-            voiceLine.NextVoiceLine(5, gender);
-            if (VoiceLineTime >= GetVoiceLineTime(5, gender))
+            voiceLine.NextVoiceLine(4, gender);
+            tutorial = TutorialState.PlayingMoveToDoor;
+        }
+        else if (tutorial == TutorialState.PlayingMoveToDoor)
+        {
+            VoiceLineTime += Time.deltaTime;
+            if (VoiceLineTime >= GetVoiceLineTime(4, gender))
             {
                 if (MoveToDoor)
                 {
                     VoiceLineTime = 0f;
-                    ComplimentIndex = voiceLine.Compliment(gender);
-                    if (ComplimentTime >= GetComplimentTime(ComplimentIndex, gender))
-                    {
-                        tutorial = TutorialState.WrongDoor;
-                        ComplimentTime = 0f;
-                    }
-                    else
-                    {
-                        ComplimentTime += Time.deltaTime;
-                    }
+                    tutorial = TutorialState.WrongDoor;
                 }
-            }
-            else
-            {
-                VoiceLineTime += Time.deltaTime;
             }
         }
         else if (tutorial == TutorialState.WrongDoor)
         {
-            voiceLine.NextVoiceLine(6, gender);
-            if (VoiceLineTime >= GetVoiceLineTime(6, gender))
+            voiceLine.NextVoiceLine(5, gender);
+            tutorial = TutorialState.PlayingWrongDoor;
+        }
+        else if (tutorial == TutorialState.PlayingWrongDoor)
+        {
+            VoiceLineTime += Time.deltaTime;
+            if (VoiceLineTime >= GetVoiceLineTime(5, gender))
             {
                 if (PlayerKeycard.HasGreenCard)
                 {
+                    DoorTrigger.SetActive(true);
                     VoiceLineTime = 0f;
-                    ComplimentIndex = voiceLine.Compliment(gender);
-                    if (ComplimentTime >= GetComplimentTime(ComplimentIndex, gender))
-                    {
-                        tutorial = TutorialState.MoveToDoor2;
-                        ComplimentTime = 0f;
-                    }
-                    else
-                    {
-                        ComplimentTime += Time.deltaTime;
-                    }
+                    tutorial = TutorialState.MoveToDoor2;
                 }
-            }
-            else
-            {
-                VoiceLineTime += Time.deltaTime;
             }
         }
         else if (tutorial == TutorialState.MoveToDoor2)
         {
-            voiceLine.NextVoiceLine(7, gender);
-            if (VoiceLineTime >= GetVoiceLineTime(7, gender))
+            voiceLine.NextVoiceLine(6, gender);
+            tutorial = TutorialState.PlayingMoveToDoor2;
+        }
+        else if (tutorial == TutorialState.PlayingMoveToDoor2)
+        {
+            VoiceLineTime += Time.deltaTime;
+            if (VoiceLineTime >= GetVoiceLineTime(6, gender))
             {
                 if (MoveToDoor2)
                 {
                     VoiceLineTime = 0f;
-                    ComplimentIndex = voiceLine.Compliment(gender);
-                    if (ComplimentTime >= GetComplimentTime(ComplimentIndex, gender))
-                    {
-                        tutorial = TutorialState.Finish;
-                        ComplimentTime = 0f;
-                    }
-                    else
-                    {
-                        ComplimentTime += Time.deltaTime;
-                    }
+                    tutorial = TutorialState.Finish;
                 }
-            }
-            else
-            {
-                VoiceLineTime += Time.deltaTime;
             }
         }
         else if (tutorial == TutorialState.Finish)
         {
-            voiceLine.NextVoiceLine(8, gender);
+            voiceLine.NextVoiceLine(7, gender);
+            tutorial = TutorialState.PlayingFinish;
+        }
+        else if (tutorial == TutorialState.PlayingFinish)
+        {
+            VoiceLineTime += Time.deltaTime;
+            if (VoiceLineTime >= GetVoiceLineTime(7, gender))
+            {
+                if (InLift)
+                {
+                    VoiceLineTime = 0f;
+                    SceneManager.LoadScene("");
+                }
+            }
         }
     }
 
@@ -278,21 +216,5 @@ public class TutorialManager : MonoBehaviour
         }
 
         return 0f;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "TutorialNextLocation")
-        {
-            MoveToLocation = true;
-        }
-        else if (other.tag == "TutorialMoveToDoor")
-        {
-            MoveToDoor = true;
-        }
-        else if (other.tag == "TutorialMoveToDoor2")
-        {
-            MoveToDoor2 = true;
-        }
     }
 }

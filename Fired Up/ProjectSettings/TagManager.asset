@@ -7,6 +7,10 @@ TagManager:
   - Statistics
   - KilledBy
   - KilledByText
+  - TutorialNextLocation
+  - TutorialMoveToDoor
+  - TutorialMoveToDoor2
+  - Lift
   layers:
   - Default
   - TransparentFX
