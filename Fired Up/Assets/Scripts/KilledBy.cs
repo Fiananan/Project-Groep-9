@@ -6,25 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class KilledBy : MonoBehaviour
 {
-    public string KilledByText = "Dark Magic";
+    public static string KilledByText;
     private Text text;
 
     void Awake()
     {
+        DontDestroyOnLoad(this.gameObject);
         text = GameObject.FindGameObjectWithTag("KilledByText").GetComponent<Text>();
     }
 
     void Update()
     {
-        DontDestroyOnLoad(this.gameObject);
-        if (text == null)
-        {
-            if (text.text == "Dark Magic")
-            {
-                text.text = KilledByText;
-                Destroy(gameObject);
-            }
-        }
+        text.text = KilledByText;
     }
 
     public void SetKilledBy(string KilledBy)
