@@ -79,11 +79,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b46eeaef2ed24be4c9bfb2cf747928b0, type: 2}
+      objectReference: {fileID: 2100000, guid: b9e258c1d8258064b90e9d44ffbf2f8f, type: 2}
     - target: {fileID: -927199367670048503, guid: 011b570302bf972458309a89deaf5f95,
         type: 3}
       propertyPath: m_Name
-      value: Copy
+      value: The Printer
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 011b570302bf972458309a89deaf5f95, type: 3}

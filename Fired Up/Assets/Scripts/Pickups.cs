@@ -6,7 +6,6 @@ public class Pickups : MonoBehaviour
 {
     [SerializeField] private string Type;
     [SerializeField] private string KeyColor;
-    [SerializeField] private GameObject KeycardTop;
 
     void Start()
     {
@@ -17,25 +16,6 @@ public class Pickups : MonoBehaviour
         else if (Type == "Armor")
         {
             gameObject.GetComponent<Renderer>().material.color = Color.blue;
-        }
-        else if (Type == "Keycard")
-        {
-            if (KeyColor == "green")
-            {
-                KeycardTop.GetComponent<Renderer>().material.color = Color.green;
-            }
-            else if (KeyColor == "red")
-            {
-                KeycardTop.GetComponent<Renderer>().material.color = Color.red;
-            }
-            else if (KeyColor == "blue")
-            {
-                KeycardTop.GetComponent<Renderer>().material.color = Color.blue;
-            }
-            else if (KeyColor == "yellow")
-            {
-                KeycardTop.GetComponent<Renderer>().material.color = Color.yellow;
-            }
         }
     }
 

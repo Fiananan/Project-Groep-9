@@ -16,6 +16,9 @@ public class ColoredDoor : MonoBehaviour
     [SerializeField] private bool Opening = false;
     [SerializeField] private bool Closing = false;
 
+    private bool OpenDoorBool = false;
+    private Collider other;
+
     void Start()
     {
         if (DoorColor == "green")
@@ -42,6 +45,62 @@ public class ColoredDoor : MonoBehaviour
 
     void Update()
     {
+        if (OpenDoorBool)
+        {
+            if (other.tag == "Player")
+            {
+                InteractText.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    if (DoorColor == "green" && Keycard.HasGreenCard)
+                    {
+                        if (IsOpen)
+                        {
+                            Closing = true;
+                        }
+                        else
+                        {
+                            Opening = true;
+                        }
+                    }
+                    else if (DoorColor == "red" && Keycard.HasRedCard)
+                    {
+                        if (IsOpen)
+                        {
+                            Closing = true;
+                        }
+                        else
+                        {
+                            Opening = true;
+                        }
+                    }
+                    else if (DoorColor == "blue" && Keycard.HasBlueCard)
+                    {
+                        if (IsOpen)
+                        {
+                            Closing = true;
+                        }
+                        else
+                        {
+                            Opening = true;
+                        }
+                    }
+                    else if (DoorColor == "yellow" && Keycard.HasYellowCard)
+                    {
+                        if (IsOpen)
+                        {
+                            Closing = true;
+                        }
+                        else
+                        {
+                            Opening = true;
+                        }
+                    }
+                    OpenDoorBool = false;
+                }
+            }
+        }
+
         if (Opening)
         {
             DoorL.transform.position -= new Vector3(Speed * Time.deltaTime, 0, 0);
@@ -64,69 +123,16 @@ public class ColoredDoor : MonoBehaviour
         }
     }
 
-    void OpenDoor(Collider other)
+    private void OnTriggerEnter(Collider col)
     {
-        if (other.tag == "Player")
-        {
-            InteractText.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                if (DoorColor == "green" && Keycard.HasGreenCard)
-                {
-                    if (IsOpen)
-                    {
-                        Closing = true;
-                    }
-                    else
-                    {
-                        Opening = true;
-                    }
-                }
-                else if (DoorColor == "red" && Keycard.HasRedCard)
-                {
-                    if (IsOpen)
-                    {
-                        Closing = true;
-                    }
-                    else
-                    {
-                        Opening = true;
-                    }
-                }
-                else if (DoorColor == "blue" && Keycard.HasBlueCard)
-                {
-                    if (IsOpen)
-                    {
-                        Closing = true;
-                    }
-                    else
-                    {
-                        Opening = true;
-                    }
-                }
-                else if (DoorColor == "yellow" && Keycard.HasYellowCard)
-                {
-                    if (IsOpen)
-                    {
-                        Closing = true;
-                    }
-                    else
-                    {
-                        Opening = true;
-                    }
-                }
-            }
-        }
+        OpenDoorBool = true;
+        other = col;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider col)
     {
-        OpenDoor(other);
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        OpenDoor(other);
+        OpenDoorBool = true;
+        other = col;
     }
 
     private void OnTriggerExit(Collider other)

@@ -184,7 +184,7 @@ public class TutorialManager : MonoBehaviour
                 if (InLift)
                 {
                     VoiceLineTime = 0f;
-                    SceneManager.LoadScene("");
+                    SceneManager.LoadScene(0);
                 }
             }
         }
