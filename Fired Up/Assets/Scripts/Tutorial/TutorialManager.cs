@@ -51,6 +51,10 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private TutorialEnemy enemy;
     [SerializeField] private GameObject DoorTrigger;
 
+    [SerializeField] private GameObject Arrow;
+    [SerializeField] private Transform[] ArrowLocations;
+    private GameObject CurrentArrow;
+
     void Update()
     {
         if (tutorial == TutorialState.Intro)
@@ -71,6 +75,7 @@ public class TutorialManager : MonoBehaviour
         else if (tutorial == TutorialState.WASD)
         {
             voiceLine.NextVoiceLine(1, gender);
+            CurrentArrow = Instantiate(Arrow, ArrowLocations[0].position, Arrow.transform.rotation);
             tutorial = TutorialState.PlayingWASD;
         }
         else if (tutorial == TutorialState.PlayingWASD)
@@ -122,6 +127,7 @@ public class TutorialManager : MonoBehaviour
         else if (tutorial == TutorialState.MoveToDoor)
         {
             voiceLine.NextVoiceLine(4, gender);
+            CurrentArrow = Instantiate(Arrow, ArrowLocations[1].position, Arrow.transform.rotation);
             tutorial = TutorialState.PlayingMoveToDoor;
         }
         else if (tutorial == TutorialState.PlayingMoveToDoor)
