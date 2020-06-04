@@ -11,6 +11,7 @@ TagManager:
   - TutorialMoveToDoor
   - TutorialMoveToDoor2
   - Lift
+  - Arrow
   layers:
   - Default
   - TransparentFX

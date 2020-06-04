@@ -93,6 +93,7 @@ public class TutorialManager : MonoBehaviour
         else if (tutorial == TutorialState.Enemy)
         {
             voiceLine.NextVoiceLine(2, gender);
+            Destroy(GameObject.FindGameObjectWithTag("Arrow"));
             tutorial = TutorialState.PlayingEnemy;
         }
         else if (tutorial == TutorialState.PlayingEnemy)
@@ -145,6 +146,7 @@ public class TutorialManager : MonoBehaviour
         else if (tutorial == TutorialState.WrongDoor)
         {
             voiceLine.NextVoiceLine(5, gender);
+            Destroy(GameObject.FindGameObjectWithTag("Arrow"));
             tutorial = TutorialState.PlayingWrongDoor;
         }
         else if (tutorial == TutorialState.PlayingWrongDoor)
@@ -163,6 +165,7 @@ public class TutorialManager : MonoBehaviour
         else if (tutorial == TutorialState.MoveToDoor2)
         {
             voiceLine.NextVoiceLine(6, gender);
+            CurrentArrow = Instantiate(Arrow, ArrowLocations[1].position, Arrow.transform.rotation);
             tutorial = TutorialState.PlayingMoveToDoor2;
         }
         else if (tutorial == TutorialState.PlayingMoveToDoor2)
@@ -180,6 +183,7 @@ public class TutorialManager : MonoBehaviour
         else if (tutorial == TutorialState.Finish)
         {
             voiceLine.NextVoiceLine(7, gender);
+            Destroy(GameObject.FindGameObjectWithTag("Arrow"));
             tutorial = TutorialState.PlayingFinish;
         }
         else if (tutorial == TutorialState.PlayingFinish)
