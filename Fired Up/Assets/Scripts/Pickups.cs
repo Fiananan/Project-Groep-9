@@ -21,7 +21,7 @@ public class Pickups : MonoBehaviour
             }
             else if (Type == "Ammo")
             {
-                other.gameObject.SendMessage("PickupAmmo", 100, SendMessageOptions.DontRequireReceiver);
+                other.gameObject.SendMessage("PickupAmmo", 21, SendMessageOptions.DontRequireReceiver);
             }
             else if (Type == "Keycard")
             {

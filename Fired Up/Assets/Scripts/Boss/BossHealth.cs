@@ -42,6 +42,7 @@ public class BossHealth : MonoBehaviour
             }
             else if (stage == 3)
             {
+                FindObjectOfType<LevelCompletion>().EnemyCount--;
                 Destroy(gameObject);
                 ChangeColor(stage);
             }
