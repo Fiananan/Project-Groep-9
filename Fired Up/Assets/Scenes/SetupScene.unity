@@ -575,7 +575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyCount: 0
-  EnemiesLevel1: 2
+  EnemiesLevel1: 4
   EnemiesLevel2: 9
   EnemiesLevel3: 1
   AllEnemiesDied: 0
