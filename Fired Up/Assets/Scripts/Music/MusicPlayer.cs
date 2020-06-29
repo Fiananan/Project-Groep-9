@@ -8,7 +8,7 @@ public class MusicPlayer : MonoBehaviour
 
     private CurrentLevelSaver levelSaver;
 
-    private AudioSource musicPlayer;
+    public AudioSource musicPlayer;
 
     [SerializeField] private AudioClip elevatorMusic;
     [SerializeField] private AudioClip LevelMusic1;
