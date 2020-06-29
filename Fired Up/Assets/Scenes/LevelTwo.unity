@@ -9727,7 +9727,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: grotten plant (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9210300138427983618, guid: c1781d6d84811cc4dba77e467c1fb346, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c1781d6d84811cc4dba77e467c1fb346, type: 3}
 --- !u!1001 &659849259
 PrefabInstance:
@@ -11523,6 +11524,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6281424698479989189, guid: 1abe79ac9edb10941b551647fb46eb73, type: 3}
+--- !u!1 &747847871
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 4382076662130353547}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1889887430}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1001 &751014920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12361,7 +12378,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: grotten plant (7)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9210300138427983618, guid: c1781d6d84811cc4dba77e467c1fb346, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c1781d6d84811cc4dba77e467c1fb346, type: 3}
 --- !u!4 &788342187 stripped
 Transform:
@@ -15348,7 +15366,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: grotten plant (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9210300138427983618, guid: c1781d6d84811cc4dba77e467c1fb346, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c1781d6d84811cc4dba77e467c1fb346, type: 3}
 --- !u!1 &962641527 stripped
 GameObject:
@@ -16596,7 +16615,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 83d55bc8d9218b040a69ff0fd654218c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 83d55bc8d9218b040a69ff0fd654218c,
         type: 3}
@@ -17173,7 +17192,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: grotten plant (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9210300138427983618, guid: c1781d6d84811cc4dba77e467c1fb346, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c1781d6d84811cc4dba77e467c1fb346, type: 3}
 --- !u!4 &1111455846 stripped
 Transform:
@@ -18918,7 +18938,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: grotten plant (8)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9210300138427983618, guid: c1781d6d84811cc4dba77e467c1fb346, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c1781d6d84811cc4dba77e467c1fb346, type: 3}
 --- !u!1 &1223911965 stripped
 GameObject:
@@ -19713,7 +19734,6 @@ Transform:
   - {fileID: 369286125}
   - {fileID: 189894910}
   - {fileID: 834854753}
-  - {fileID: 1889887430}
   - {fileID: 921958172}
   - {fileID: 495067181}
   - {fileID: 945608664}
@@ -19745,6 +19765,7 @@ Transform:
   - {fileID: 706640079}
   - {fileID: 1506803168}
   - {fileID: 234575478}
+  - {fileID: 1827276303}
   - {fileID: 851298455}
   - {fileID: 2021250889}
   - {fileID: 953864316}
@@ -26497,7 +26518,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: grotten plant (9)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9210300138427983618, guid: c1781d6d84811cc4dba77e467c1fb346, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c1781d6d84811cc4dba77e467c1fb346, type: 3}
 --- !u!1001 &1749760981
 PrefabInstance:
@@ -27462,6 +27484,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1655616069}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1827276302
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 4382076662130353547}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1827276303}
+  m_Layer: 0
+  m_Name: wc papier model (Missing Prefab)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1827276303
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 4382076662130353547}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827276302}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1889887430}
+  m_Father: {fileID: 1270243907}
+  m_RootOrder: 212
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1833618871 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7867506599362119432, guid: f3c66bfe81d7b144d8fa80800a7de6fe,
@@ -28387,7 +28440,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: grotten plant (6)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9210300138427983618, guid: c1781d6d84811cc4dba77e467c1fb346, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c1781d6d84811cc4dba77e467c1fb346, type: 3}
 --- !u!1 &1871386764 stripped
 GameObject:
@@ -28716,12 +28770,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61f887a00c569de438f57f8547604c8e, type: 3}
---- !u!4 &1889887430 stripped
+--- !u!4 &1889887430
 Transform:
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 8767091544115319630, guid: 1e274981f40cdbe449b00cd4954feb60,
     type: 3}
   m_PrefabInstance: {fileID: 4382076662130353547}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747847871}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1827276303}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1890241982 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7335235719776872252, guid: 6ce424eb567c5c8429ef3db7a0d50008,
