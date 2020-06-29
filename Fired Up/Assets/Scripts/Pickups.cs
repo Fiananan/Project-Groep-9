@@ -7,18 +7,6 @@ public class Pickups : MonoBehaviour
     [SerializeField] private string Type;
     [SerializeField] private string KeyColor;
 
-    void Start()
-    {
-        if (Type == "HP")
-        {
-            gameObject.GetComponent<Renderer>().material.color = Color.green;
-        }
-        else if (Type == "Armor")
-        {
-            gameObject.GetComponent<Renderer>().material.color = Color.blue;
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
