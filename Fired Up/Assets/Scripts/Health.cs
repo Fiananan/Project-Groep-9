@@ -11,8 +11,12 @@ public class Health : MonoBehaviour
 
     private GameObject stats;
 
+    private LevelCompletion levelCompletion;
+
     void Start()
     {
+        levelCompletion = FindObjectOfType<LevelCompletion>();
+
         stats = GameObject.FindGameObjectWithTag("Statistics");
 
         HP = MaxHP;
@@ -23,7 +27,8 @@ public class Health : MonoBehaviour
         if (HP <= 0)
         {
             stats.SendMessage("AddScore", 100, SendMessageOptions.DontRequireReceiver);
-            Destroy(gameObject);
+            levelCompletion.EnemyCount--;
+            Destroy(transform.parent.gameObject);
         }
     }
 

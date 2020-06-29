@@ -16,6 +16,7 @@ TagManager:
   - TutorialManager
   - TutorialSetup
   - MusicPlayer
+  - Enemy
   layers:
   - Default
   - TransparentFX

@@ -11,10 +11,7 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            if (collision.gameObject.GetComponent<PlayerHealth>().HP <= 10)
-            {
-                GameObject.FindGameObjectWithTag("KilledBy").GetComponent<KilledBy>().SetKilledBy(ShotBy);
-            }
+            GameObject.FindGameObjectWithTag("KilledBy").GetComponent<KilledBy>().SetKilledBy(ShotBy);
         }
         collision.gameObject.SendMessage("RecieveDamage", new BulletParameters(Damage, ShotBy), SendMessageOptions.DontRequireReceiver);
         Destroy(gameObject);

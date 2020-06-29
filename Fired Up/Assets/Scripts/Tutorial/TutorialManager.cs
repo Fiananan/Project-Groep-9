@@ -199,7 +199,9 @@ public class TutorialManager : MonoBehaviour
                 if (InLift)
                 {
                     VoiceLineTime = 0f;
-                    SceneManager.LoadScene(0);
+                    FindObjectOfType<LevelSelector>().TutorialCompleted = true;
+                    FindObjectOfType<CurrentLevelSaver>().SetCurrentLevel("LevelSelector");
+                    SceneManager.LoadScene(1);
                 }
             }
         }
