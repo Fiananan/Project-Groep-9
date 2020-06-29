@@ -29,7 +29,7 @@ public class TutorialManager : MonoBehaviour
 {
     [SerializeField] private TutorialState tutorial = TutorialState.Intro;
 
-    [SerializeField] private string gender = "female";
+    public string gender;
 
     [SerializeField] private VoiceLineManager voiceLine;
 
@@ -54,6 +54,11 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private GameObject Arrow;
     [SerializeField] private Transform[] ArrowLocations;
     private GameObject CurrentArrow;
+
+    void Start()
+    {
+        gender = GameObject.FindGameObjectWithTag("TutorialSetup").GetComponent<TutorialSetup>().GetVoice();
+    }
 
     void Update()
     {
@@ -209,20 +214,6 @@ public class TutorialManager : MonoBehaviour
         else if (gender == "female")
         {
             return VoiceLineTimesFemale[index];
-        }
-
-        return 0f;
-    }
-
-    float GetComplimentTime(int index, string gender)
-    {
-        if (gender == "male")
-        {
-            return ComplimentTimesMale[index];
-        }
-        else if (gender == "female")
-        {
-            return ComplimentTimesFemale[index];
         }
 
         return 0f;

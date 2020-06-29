@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -67,6 +68,20 @@ public class PlayerHealth : MonoBehaviour
     {
         int damage = BulletParams.Damage;
 
+        if (Armor <= 0)
+        {
+            HP -= damage;
+        }
+        else
+        {
+            Armor -= damage;
+        }
+        GameObject PopUp = Instantiate(DamagePopUp, transform.position + new Vector3(0, 2, 0), transform.rotation);
+        PopUp.GetComponent<DamagePopUp>().Setup(damage);
+    }
+
+    void RecieveLazerDamage(int damage)
+    {
         if (Armor <= 0)
         {
             HP -= damage;

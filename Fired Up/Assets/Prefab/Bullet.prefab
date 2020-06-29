@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8717930391387877529}
   - component: {fileID: 7481278558313104683}
   - component: {fileID: 8174975330449090806}
+  - component: {fileID: 2471622790143294418}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -57,6 +58,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -123,3 +125,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 0
+  ShotBy: 
+--- !u!114 &2471622790143294418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668053577703288655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68e2aefb2a877f42a4aeeba808cdb02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 5

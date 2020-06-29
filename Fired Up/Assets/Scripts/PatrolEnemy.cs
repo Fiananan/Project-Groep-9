@@ -54,9 +54,9 @@ public class PatrolEnemy : MonoBehaviour
 
     void Shoot()
     {
-        GameObject Bullet;
-        Bullet = Instantiate(BulletPrefab, FirePoint.position, FirePoint.rotation);
-        Bullet.GetComponent<Rigidbody>().AddForce(Bullet.transform.forward.normalized * BulletSpeed, ForceMode.Impulse);
+        GameObject Bullet = (GameObject) Instantiate(BulletPrefab, FirePoint.position, FirePoint.rotation);
+        Bullet.transform.Rotate(new Vector3(90f, FirePoint.rotation.y, 0f));
+        Bullet.GetComponent<Rigidbody>().AddForce(Bullet.transform.up * BulletSpeed, ForceMode.Impulse);
         Bullet.GetComponent<Bullet>().Damage = 10;
         Bullet.GetComponent<Bullet>().ShotBy = gameObject.name;
     }
