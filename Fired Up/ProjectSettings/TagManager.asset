@@ -12,6 +12,10 @@ TagManager:
   - TutorialMoveToDoor2
   - Lift
   - Arrow
+  - LevelSaver
+  - TutorialManager
+  - TutorialSetup
+  - MusicPlayer
   layers:
   - Default
   - TransparentFX

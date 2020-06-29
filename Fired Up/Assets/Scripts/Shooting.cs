@@ -133,9 +133,9 @@ public class Shooting : MonoBehaviour
 
     void Shoot()
     {
-        GameObject Bullet;
-        Bullet = Instantiate(BulletPrefab, ShootingPoint.position, ShootingPoint.rotation);
-        Bullet.GetComponent<Rigidbody>().AddForce(-Bullet.transform.forward.normalized * BulletSpeed, ForceMode.Impulse);
+        GameObject Bullet = (GameObject)Instantiate(BulletPrefab, ShootingPoint.position, ShootingPoint.rotation);
+        Bullet.transform.Rotate(new Vector3(90f, ShootingPoint.rotation.y, 0f));
+        Bullet.GetComponent<Rigidbody>().AddForce(-(Bullet.transform.up) * BulletSpeed, ForceMode.Impulse);
         Bullet.GetComponent<Bullet>().Damage = CriticalHit();
         Bullet.GetComponent<Bullet>().ShotBy = "Player";
         stats.SendMessage("ShotFired", SendMessageOptions.DontRequireReceiver);
